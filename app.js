@@ -7,6 +7,7 @@ const stationId = document.querySelector('.station-id');
 const stationTitle = document.querySelector('.station-title');
 const darkModBtn = document.querySelector('.dark-mod');
 
+//Use to compare the time of a measure
 const compareTime = (a, b) => {
     const objA = a.x.split(' ');
     const objB = b.x.split(' ');
@@ -28,6 +29,7 @@ const compareTime = (a, b) => {
     }
 }
 
+//Transform json in chart data format
 const jsonToChartData = (json) => {
     let data = [];
     //console.log(json);
@@ -40,6 +42,7 @@ const jsonToChartData = (json) => {
     return data;
 }
 
+//Recover data and display chart
 [...slides].forEach(slide => {
     slide.addEventListener('click', () => {
         popup.style.display = 'flex';

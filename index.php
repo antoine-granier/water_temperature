@@ -26,6 +26,7 @@
         </div>
         <div class="swiper-wrapper">
     <?php
+        //Recovery of the codes of the measuring stations
         $json = file_get_contents("https://hubeau.eaufrance.fr/api/v1/temperature/station?code_departement=33&format=json&pretty");
         if(!$json) {
             echo "<h2>Une erreur est survenue. Vérifier votre connexion...</h2>";
@@ -37,6 +38,7 @@
                 array_push($station_code, $result["data"][$i]["code_station"]);
             }
             foreach($station_code as $code) {
+                //Recovery of the temperature and infomartions about stations
                 $json = file_get_contents("https://hubeau.eaufrance.fr/api/v1/temperature/chronique?code_station=".$code."&size=1&sort=desc&pretty");
                 $result = json_decode($json, true);
                 $data = $result["data"][0];
